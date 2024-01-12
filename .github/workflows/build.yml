@@ -1,0 +1,20 @@
+name: Build and push image
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push devcontainer
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/radusuciu/snakemake-tutorial
+          cacheFrom: ghcr.io/radusuciu/snakemake-tutorial
+          push: always
