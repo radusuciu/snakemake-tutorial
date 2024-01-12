@@ -1,17 +1,19 @@
 FROM mambaorg/micromamba:1-bullseye
-ARG USER=snek
+ARG TUTORIAL_USER=snek
 ARG UID=1000
 ARG GID=1000
 
 USER root
-RUN addgroup --gid ${GID} ${USER} && adduser --disabled-password --gecos '' --uid ${UID} --gid ${GID} ${USER}
+RUN addgroup --gid ${GID} ${TUTORIAL_USER} \
+    && adduser --disabled-password --gecos '' --uid ${UID} --gid ${GID} ${TUTORIAL_USER}
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
        curl \
     && apt-get clean \
     && rm -rf /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log
 
-USER ${USER}
+USER ${TUTORIAL_USER}
+RUN whoami
 WORKDIR /workspace
 RUN <<-EOF
     curl -L https://api.github.com/repos/snakemake/snakemake-tutorial-data/tarball -o snakemake-tutorial-data.tar.gz

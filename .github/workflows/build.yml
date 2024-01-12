@@ -22,6 +22,5 @@ jobs:
           devcontainer build \
             --workspace-folder . \
             --cache-from ghcr.io/${{ github.repository }}:latest \
-            --image-name ghcr.io/${{ github.repository }}:latest
-
-          docker push ghcr.io/${{ github.repository }}:latest
+            --image-name ghcr.io/${{ github.repository }}:latest \
+            --push

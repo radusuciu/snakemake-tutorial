@@ -1,6 +1,9 @@
 {
     "name": "Snakemake Tutorial",
-    "image": "ghcr.io/radusuciu/snakemake-tutorial:latest",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "cacheFrom": "ghcr.io/radusuciu/snakemake-tutorial:latest"
+    },
     "workspaceFolder": "/workspace",
     "customizations": {
         "vscode": {
