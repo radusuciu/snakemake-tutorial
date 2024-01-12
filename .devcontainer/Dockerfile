@@ -15,3 +15,5 @@ RUN <<-EOF
     rm snakemake-tutorial-data.tar.gz
     micromamba install -y -n base -f environment.yaml
 EOF
+
+LABEL org.opencontainers.image.source https://github.com/radusuciu/snakemake-tutorial
