@@ -1,0 +1,21 @@
+{
+    "name": "Snakemake Tutorial",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "Snakemake.snakemake-lang",
+                "tfehlmann.snakefmt"
+            ],
+            "settings": {
+                "[snakefile]": {
+                    "editor.formatOnSave": true
+                }
+            }
+        }
+    }
+}
