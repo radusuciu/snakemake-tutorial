@@ -17,8 +17,11 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push devcontainer
-        uses: devcontainers/ci@v0.3
-        with:
-          imageName: ghcr.io/radusuciu/snakemake-tutorial
-          cacheFrom: ghcr.io/radusuciu/snakemake-tutorial
-          push: always
+        run: |
+          npm install -g @devcontainers/cli 
+          devcontainer build \
+            --workspace-folder . \
+            --cache-from ghcr.io/${{ github.repository }}:latest \
+            --image-name ghcr.io/${{ github.repository }}:latest
+
+          docker push ghcr.io/${{ github.repository }}:latest
